@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu kiểu YouTube - Tương tác</title>
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: white;
+        }
+
+        header .logo img {
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            display: flex;
+            width: 50%;
+        }
+
+        .search-bar input {
+            width: 80%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .search-bar button {
+            padding: 8px 16px;
+            background-color: #f1f1f1;
+            border: none;
+            cursor: pointer;
+        }
+
+        .user-options a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Main Menu Styles */
+        .main-menu {
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .main-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .main-menu ul li {
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        .main-menu ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .main-menu ul li a:hover {
+            color: #ff0000;
+        }
+
+        /* Submenu Styles */
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            z-index: 1;
+        }
+
+        .submenu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .submenu ul li {
+            padding: 5px 10px;
+        }
+
+        .submenu ul li a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .submenu ul li a:hover {
+            color: #ff0000;
+        }
+
+        .main-menu ul li:hover .submenu {
+            display: block;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content h1 {
+            color: #ff0000;
+        }
+
+        .image-gallery img {
+            width: 300px;
+            height: auto;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        /* Button Styles */
+        button {
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #cc0000;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Logo" onclick="alert('You clicked on the YouTube logo!')">
+        </div>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm">
+            <button onclick="searchFunction()">Tìm kiếm</button>
+        </div>
+        <div class="user-options">
+            <a href="#" onclick="alert('Đăng nhập thành công!')">Đăng nhập</a>
+        </div>
+    </header>
+
+    <!-- Main Menu -->
+    <nav class="main-menu">
+        <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Thời sự</a>
+                <div class="submenu">
+                    <ul>
+                        <li><a href="#">Chính trị</a></li>
+                        <li><a href="#">Xã hội</a></li>
+                        <li><a href="#">Giao thông</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="#">Kinh doanh</a></li>
+            <li><a href="#">Giải trí</a></li>
+            <li><a href="#">Thể thao</a></li>
+            <li><a href="#">Pháp luật</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Chào mừng đến với giao diện YouTube</h1>
+        <p>Click vào các hình ảnh dưới đây để thay đổi hình ảnh hiển thị.</p>
+        <div class="image-gallery">
+            <img src="https://i.ytimg.com/vi/8ZcmTl_1ER8/maxresdefault.jpg" alt="Image 1" onclick="changeImage(this)">
+            <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Image 2" onclick="changeImage(this)">
+            <img src="https://i.ytimg.com/vi/kJQP7kiw5Fk/maxresdefault.jpg" alt="Image 3" onclick="changeImage(this)">
+        </div>
+        <div class="main-image">
+            <img id="mainImage" src="https://i.ytimg.com/vi/8ZcmTl_1ER8/maxresdefault.jpg" alt="Main Image" width="500">
+        </div>
+    </div>
+
+    <script>
+        // Function to simulate a search action
+        function searchFunction() {
+            var query = document.getElementById('searchInput').value;
+            if (query) {
+                alert('Bạn đang tìm kiếm: ' + query);
+            } else {
+                alert('Vui lòng nhập nội dung tìm kiếm');
+            }
+        }
+
+        // Function to change the main image when a user clicks on a gallery image
+        function changeImage(element) {
+            var mainImage = document.getElementById('mainImage');
+            mainImage.src = element.src;
+        }
+    </script>
+
+</body>
+</html>
